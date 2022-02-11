@@ -43,5 +43,11 @@ public class Main {
 				.map(Human::getWeight)
 				.reduce(1, (w1, w2) -> w1 * w2);
 		System.out.println(totalWeight);
+
+		int mul = 1;
+		for (Human h : list) {
+			mul *= h.getWeight();
+		}
+		System.out.println(mul);
 	}
 }
