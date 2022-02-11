@@ -7,12 +7,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Main {
-	private static <T> void print(Set<T> set) {
-		set.forEach(el -> System.out.print(el + " "));
-		System.out.println();
-	}
+	private static void task1() {
+		// Пункт 1
 
-	public static void main(String[] args) {
 		Set<Integer> testSet = new SyncSet<>();
 //		Set<Integer> testSet = new HashSet<>();
 
@@ -39,5 +36,9 @@ public class Main {
 		}
 
 		testSet.forEach(el -> System.out.print(el + " "));
+	}
+
+	public static void main(String[] args) {
+
 	}
 }
