@@ -2,16 +2,16 @@ package me.mikholsky.task3;
 
 // Вариант 4
 
-
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Main {
 	private static void task1() {
 		// Пункт 1
 
-		Set<Integer> testSet = new SyncSet<>();
-//		Set<Integer> testSet = new HashSet<>();
+//		Set<Integer> testSet = new SyncSet<>();
+		Set<Integer> testSet = new HashSet<>();
 
 		Thread t1 = new Thread(() -> {
 			for (int i = 0; i < 1000; ++i) {
@@ -35,7 +35,7 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		testSet.forEach(el -> System.out.print(el + " "));
+		System.out.println(testSet.size());
 	}
 
 	public static void main(String[] args) {
