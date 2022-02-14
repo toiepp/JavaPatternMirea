@@ -4,7 +4,7 @@
 
 <span style="color: lightgreen">2</span>
 
-<span style="color: red">3</span>
+<span style="color: yellow">3</span>
 
 <span style="color: red">4</span>
 
