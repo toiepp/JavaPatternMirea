@@ -1,26 +1,18 @@
 package me.mikholsky.task3;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LockMap<K, V> implements Map<K, V> {
-	Map<K, V> map;
-	Lock lock = new ReentrantLock();
+	// Shared resource
+	private final Map<K, V> map;
+	private final Lock lock = new ReentrantLock(true);
 
-	public LockMap() {
-		map = new HashMap<>();
-	}
-
-	public LockMap(int initCapacity) {
-		map = new HashMap<>(initCapacity);
-	}
-
-	public LockMap(Map<? extends K, ? extends V> map) {
-		this.map = new HashMap<>(map);
+	public LockMap(Map<K, V> mapImplementation) {
+		map = mapImplementation;
 	}
 
 	@Override

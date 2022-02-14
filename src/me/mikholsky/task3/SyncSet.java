@@ -1,23 +1,14 @@
 package me.mikholsky.task3;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public class SyncSet<T> implements Set<T> {
 	Set<T> set;
 
-	public SyncSet() {
-		set = new HashSet<>();
-	}
-
-	public SyncSet(int size) {
-		set = new HashSet<>(size);
-	}
-
-	public SyncSet(Collection<T> collection) {
-		set = new HashSet<>(collection);
+	public SyncSet(Set<T> setImpl) {
+		set = setImpl;
 	}
 
 	@Override

@@ -2,7 +2,7 @@
 
 <span style="color: lightgreen">1</span>
 
-<span style="color: red">2</span>
+<span style="color: lightgreen">2</span>
 
 <span style="color: red">3</span>
 
