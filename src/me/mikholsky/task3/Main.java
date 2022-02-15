@@ -2,9 +2,10 @@ package me.mikholsky.task3;
 
 // Вариант 4
 
-import com.sun.source.tree.Tree;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Main {
