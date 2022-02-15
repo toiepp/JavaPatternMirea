@@ -13,7 +13,7 @@
 <span style="color: red">6</span>
 
 - <span style="color: yellow">Фабричный метод</span>
-- <span style="color: red">Абстрактная фабрика</span>
+- <span style="color: yellow">Абстрактная фабрика</span>
 - <span style="color: red">Строитель</span>
 - <span style="color: red">Прототип</span>
 
