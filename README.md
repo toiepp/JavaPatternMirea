@@ -14,7 +14,7 @@
 
 - <span style="color: yellow">Фабричный метод</span>
 - <span style="color: yellow">Абстрактная фабрика</span>
-- <span style="color: red">Строитель</span>
+- <span style="color: yellow">Строитель</span>
 - <span style="color: red">Прототип</span>
 
 <span style="color: red">7</span>
