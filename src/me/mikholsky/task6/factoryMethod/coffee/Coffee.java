@@ -1,22 +1,13 @@
 package me.mikholsky.task6.factoryMethod.coffee;
 
-import me.mikholsky.task6.factoryMethod.enums.CoffeeBrewType;
-import me.mikholsky.task6.factoryMethod.enums.CoffeeType;
-
-public class Coffee {
-	private final CoffeeType coffeeType;
-	private final CoffeeBrewType coffeeBrewType;
-
-	public Coffee(CoffeeType type, CoffeeBrewType brewType) {
-		this.coffeeType = type;
-		this.coffeeBrewType = brewType;
+public abstract class Coffee {
+	public void grindBeans() {
+		System.out.println("Grinding beans");
 	}
 
-	@Override
-	public String toString() {
-		return "Coffee{" +
-				coffeeType + ", " +
-				coffeeBrewType +
-				'}';
+	public abstract void brewCoffee();
+
+	public void pourIntoCup() {
+		System.out.println("Pouring coffee into cup");
 	}
 }
