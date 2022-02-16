@@ -1,5 +1,7 @@
 # JavaPatternMirea
 
+water nut paper salon pioneer kite betray sail ensure churn again shadow
+
 <span style="color: lightgreen">1</span>
 
 <span style="color: lightgreen">2</span>
