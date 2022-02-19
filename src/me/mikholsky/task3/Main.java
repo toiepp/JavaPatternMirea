@@ -2,10 +2,7 @@ package me.mikholsky.task3;
 
 // Вариант 4
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -18,11 +15,11 @@ public class Main {
 	}
 
 	private static void task1() throws InterruptedException {
-		Set<Integer> testSet = new SyncSet<>(new HashSet<>());
+		Set<Integer> testSet = new SyncSet<>(new LinkedHashSet<>());
 
-		Thread t1 = new Thread(() -> IntStream.range(0, 500).forEach(testSet::add));
+		Thread t1 = new Thread(() -> IntStream.range(0, 10).forEach(testSet::add));
 
-		Thread t2 = new Thread(() -> IntStream.range(500, 1000).forEach(testSet::add));
+		Thread t2 = new Thread(() -> IntStream.range(10, 20).forEach(testSet::add));
 
 		t1.start();
 		t2.start();
@@ -34,9 +31,22 @@ public class Main {
 	}
 
 	private static void task2() throws InterruptedException {
-//		Map<Integer, Integer> map = new HashMap<>();
-		Map<Map.Entry<Integer, Integer>, Boolean> seats = new LockMap<>(new HashMap<>());
+//		Map<Integer, Integer> testMap = new HashMap<>();
+		Map<Integer, Integer> testMap = new LockMap<>(new LinkedHashMap<>());
 
+		Thread t1 = new Thread(() -> IntStream.range(0, 10).forEach(i -> testMap.put(i, i * 10)));
+
+		Thread t2 = new Thread(() -> IntStream.range(10, 20).forEach(i -> testMap.put(i, i * 10)));
+
+		t1.start();
+		t2.start();
+
+		t1.join();
+		t2.join();
+
+		for (Map.Entry<Integer, Integer> el : testMap.entrySet()) {
+			System.out.println(el.getKey() + ": " + el.getValue());
+		}
 	}
 
 	public static void main(String[] args) {
@@ -44,7 +54,7 @@ public class Main {
 				.forEach(el -> {
 					System.out.print(el + ": ");
 					try {
-						task2();
+						task1();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

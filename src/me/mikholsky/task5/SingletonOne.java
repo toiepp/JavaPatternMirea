@@ -5,4 +5,8 @@ public class SingletonOne {
 	}
 
 	public static final SingletonOne instance = new SingletonOne();
+
+	public void someFunctionality() {
+		System.out.println("Perform operations");
+	}
 }

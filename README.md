@@ -6,20 +6,15 @@ water nut paper salon pioneer kite betray sail ensure churn again shadow
 
 <span style="color: lightgreen">2</span>
 
-<span style="color: yellow">3</span>
+<span style="color: lightgreen">3</span>
 
 <span style="color: red">4</span>
 
-<span style="color: yellow">5</span>
+<span style="color: lightgreen">5</span>
 
-<span style="color: red">6</span>
+<span style="color: lightgreen">6</span>
 
-- <span style="color: yellow">Фабричный метод</span>
-- <span style="color: yellow">Абстрактная фабрика</span>
-- <span style="color: yellow">Строитель</span>
-- <span style="color: yellow">Прототип</span>
-
-<span style="color: red">7</span>
+<span style="color: lightgreen">7</span>
 
 <span style="color: red">8</span>
 
