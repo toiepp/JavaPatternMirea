@@ -1,6 +1,8 @@
 package me.mikholsky.task8;
 
 import me.mikholsky.task8.mediator.*;
+import me.mikholsky.task8.memento.TextEditor;
+import me.mikholsky.task8.memento.TextWindow;
 
 /**
  * Вариан 4 */
@@ -18,8 +20,21 @@ public class Main {
 		u1.notify("Hello there!");
 		u2.notify("General Kenobi!");
 
+
+		System.out.println();
+		System.out.println();
+
+
 		// Паттерн Снимок
+		TextEditor textEditor = new TextEditor(new TextWindow());
+		textEditor.write("The Memento Design Pattern\n");
+		textEditor.write("How to implement it in Java?\n");
+		textEditor.hitSave();
 
+		textEditor.write("Buy milk and eggs before coming home\n");
 
+		textEditor.hitUndo();
+
+		System.out.println(textEditor.print());
 	}
 }
