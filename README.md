@@ -6,7 +6,7 @@
 
 <span style="color: lightgreen">3</span>
 
-<span style="color: yellow">4</span>
+<span style="color: lightgreen">4</span>
 
 <span style="color: lightgreen">5</span>
 
@@ -14,17 +14,17 @@
 
 <span style="color: lightgreen">7</span>
 
-<span style="color: yellow">8</span>
+<span style="color: lightgreen">8</span>
 
 <span style="color: red">9</span>
 
-<span style="color: yellow">10</span>
+<span style="color: lightgreen">10</span>
 
-<span style="color: yellow">11</span>
+<span style="color: lightgreen">11</span>
 
-<span style="color: yellow">12</span>
+<span style="color: lightgreen">12</span>
 
-<span style="color: yellow">13</span>
+<span style="color: lightgreen">13</span>
 
 <span style="color: red">14</span>
 
