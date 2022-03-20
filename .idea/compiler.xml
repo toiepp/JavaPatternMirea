@@ -7,9 +7,6 @@
     <bytecodeTargetLevel>
       <module name="me.mikholskiy.task11.main" target="17" />
       <module name="me.mikholskiy.task11.test" target="17" />
-      <module name="task14" target="11" />
-      <module name="task14.main" target="11" />
-      <module name="task14.test" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
