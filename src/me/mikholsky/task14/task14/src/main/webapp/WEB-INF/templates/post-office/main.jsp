@@ -11,5 +11,7 @@
 <a href="post-office/new-form">Add new post office</a>
 <br><br>
 <a href="post-office/list">Get all post offices</a>
+<br><br>
+<a href="${pageContext.request.contextPath}/">Go back.</a>
 </body>
 </html>

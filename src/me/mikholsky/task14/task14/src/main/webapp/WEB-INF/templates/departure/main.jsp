@@ -11,5 +11,7 @@
 <a href="departure/new-form">Add new departure</a>
 <br><br>
 <a href="departure/list">Get all departures</a>
+<br><br>
+<a href="${pageContext.request.contextPath}/">Go back.</a>
 </body>
 </html>

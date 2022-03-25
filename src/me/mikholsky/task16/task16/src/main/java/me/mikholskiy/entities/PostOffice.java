@@ -61,6 +61,10 @@ public class PostOffice {
 		departures.add(departure);
 	}
 
+	public void deleteDeparture(int id) {
+		departures.removeIf(departure -> departure.getId() == id);
+	}
+
 	@Override
 	public String toString() {
 		return "PostOffice{" +

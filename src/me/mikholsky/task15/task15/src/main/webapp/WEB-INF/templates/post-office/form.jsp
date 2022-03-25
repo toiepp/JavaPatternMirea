@@ -17,5 +17,7 @@
     City: <form:input path="cityName"/>
     <input type="submit" value="Submit">
 </form:form>
+<br>
+<a href="${pageContext.request.contextPath}/post-office">Go back.</a>
 </body>
 </html>

@@ -20,13 +20,11 @@ public class PostOfficeDao implements Dao<PostOffice> {
 	}
 
 	@Override
-	@Transactional
 	public Optional<PostOffice> get(int id) {
 		return Optional.ofNullable(sessionFactory.getCurrentSession().get(PostOffice.class, id));
 	}
 
 	@Override
-	@Transactional
 	public List<PostOffice> getAll() {
 		return sessionFactory.getCurrentSession()
 							 .createQuery("from PostOffice", PostOffice.class)
@@ -34,13 +32,11 @@ public class PostOfficeDao implements Dao<PostOffice> {
 	}
 
 	@Override
-	@Transactional
 	public void save(PostOffice postOffice) {
 		sessionFactory.getCurrentSession().save(postOffice);
 	}
 
 	@Override
-	@Transactional
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		PostOffice postOffice = session.get(PostOffice.class, id);
