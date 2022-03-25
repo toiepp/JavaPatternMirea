@@ -9,6 +9,7 @@
 </head>
 <body>
 <a href="departure">Go to departures</a>
+<br><br>
 <a href="post-office">Go to post offices</a>
 </body>
 </html>

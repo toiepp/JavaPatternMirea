@@ -17,5 +17,7 @@
     Date (yyyy-MM-dd): <form:input path="departureDate"/>
     <input type="submit" value="Submit">
 </form:form>
+<br>
+<a href="${pageContext.request.contextPath}/departure">Go back.</a>
 </body>
 </html>

@@ -20,7 +20,7 @@
     </ul>
 </c:forEach>
 
-<a href="departure">Back</a>
+<a href="${pageContext.request.contextPath}/departure">Back</a>
 
 </body>
 </html>

@@ -1,8 +1,7 @@
 package me.mikholskiy.controllers;
 
-import me.mikholskiy.daos.Dao;
-import me.mikholskiy.daos.DepartureDao;
 import me.mikholskiy.entities.Departure;
+import me.mikholskiy.services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -10,16 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.sql.Struct;
-
 @Controller
 @RequestMapping("/departure")
 public class DepartureController {
-	private Dao<Departure> departureDao;
+	private Service<Departure> departureService;
 
 	@Autowired
-	public void setDepartureDao(@Qualifier("departureDao") Dao<Departure> departureDao) {
-		this.departureDao = departureDao;
+	public void setDepartureDao(@Qualifier("departureService") Service<Departure> departureService) {
+		this.departureService = departureService;
 	}
 
 	@GetMapping
@@ -34,21 +31,21 @@ public class DepartureController {
 
 	@PostMapping("/new")
 	public String submitNewDeparture(@ModelAttribute("departure") Departure departure) {
-		departureDao.save(departure);
+		departureService.save(departure);
 
 		return "redirect:/departure";
 	}
 
 	@GetMapping("/list")
 	public String showAllDepartures(Model model) {
-		model.addAttribute("listOfDepartures", departureDao.getAll());
+		model.addAttribute("listOfDepartures", departureService.getAll());
 
 		return "departure/list";
 	}
 
 	@PostMapping("/delete")
 	public RedirectView deleteDeparture(@RequestParam String id) {
-		departureDao.delete(Integer.parseInt(id));
+		departureService.delete(Integer.parseInt(id));
 
 		return new RedirectView("/departure/list");
 	}

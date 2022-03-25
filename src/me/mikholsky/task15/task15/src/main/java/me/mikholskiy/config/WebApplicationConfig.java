@@ -30,6 +30,7 @@ public class WebApplicationConfig implements EnvironmentAware {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUrl(environment.getProperty("jdbc.url"));
 		dataSource.setUsername(environment.getProperty("jdbc.username"));
+		dataSource.setPassword(environment.getProperty("jdbc.password"));
 		dataSource.setDriverClassName(environment.getProperty("jdbc.driverClassName"));
 
 		return dataSource;

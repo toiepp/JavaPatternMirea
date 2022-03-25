@@ -26,9 +26,9 @@
 
 <span style="color: lightgreen">13</span>
 
-<span style="color: yellow">14</span>
+<span style="color: lightgreen">14</span>
 
-<span style="color: yellow">15</span>
+<span style="color: lightgreen">15</span>
 
 <span style="color: yellow">16</span>
 

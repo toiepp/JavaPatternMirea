@@ -19,5 +19,7 @@
         </li>
     </ul>
 </c:forEach>
+<br>
+<a href="${pageContext.request.contextPath}/post-office">Go back</a>
 </body>
 </html>

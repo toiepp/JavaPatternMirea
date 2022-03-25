@@ -1,26 +1,21 @@
 package me.mikholskiy.controllers;
 
-import me.mikholskiy.daos.Dao;
-import me.mikholskiy.entities.Departure;
 import me.mikholskiy.entities.PostOffice;
-import net.bytebuddy.matcher.StringMatcher;
+import me.mikholskiy.services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/post-office")
 public class PostOfficeController {
-	private Dao<PostOffice> postOfficeDao;
+	private Service<PostOffice> postOfficeService;
 
 	@Autowired
-	public void setPostOfficeDao(@Qualifier("postOfficeDao") Dao<PostOffice> postOfficeDao) {
-		this.postOfficeDao = postOfficeDao;
+	public void setPostOfficeDao(@Qualifier("postOfficeService") Service<PostOffice> postOfficeService) {
+		this.postOfficeService = postOfficeService;
 	}
 
 	@GetMapping
@@ -35,28 +30,28 @@ public class PostOfficeController {
 
 	@PostMapping("/new")
 	public String submitNewPostOffice(@ModelAttribute("postOffice") PostOffice postOffice) {
-		postOfficeDao.save(postOffice);
+		postOfficeService.save(postOffice);
 
 		return "redirect:/post-office";
 	}
 
 	@GetMapping("/list")
 	public String showAllPostOffices(Model model) {
-		model.addAttribute("listOfPostOffices", postOfficeDao.getAll());
+		model.addAttribute("listOfPostOffices", postOfficeService.getAll());
 
 		return "post-office/list";
 	}
 
 	@PostMapping("/delete")
 	public String deletePostOffice(@RequestParam String id) {
-		postOfficeDao.delete(Integer.parseInt(id));
+		postOfficeService.delete(Integer.parseInt(id));
 
 		return "redirect:/post-office/list";
 	}
 
 	@GetMapping("/{id}/departures")
 	public String showAllRelatedDepartures(@PathVariable Integer id, Model model) {
-		var postOffice = postOfficeDao.get(id);
+		var postOffice = postOfficeService.get(id);
 
 		postOffice.get().getDepartures().forEach(System.out::println);
 

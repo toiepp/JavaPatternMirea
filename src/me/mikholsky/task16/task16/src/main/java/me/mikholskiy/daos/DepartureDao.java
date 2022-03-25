@@ -1,6 +1,7 @@
 package me.mikholskiy.daos;
 
 import me.mikholskiy.entities.Departure;
+import me.mikholskiy.entities.PostOffice;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,11 @@ public class DepartureDao implements Dao<Departure> {
 	}
 
 	@Override
-	@Transactional
 	public Optional<Departure> get(int id) {
 		return Optional.ofNullable(sessionFactory.getCurrentSession().get(Departure.class, id));
 	}
 
 	@Override
-	@Transactional
 	public List<Departure> getAll() {
 		return sessionFactory.getCurrentSession()
 							 .createQuery("from Departure", Departure.class)
@@ -34,16 +33,16 @@ public class DepartureDao implements Dao<Departure> {
 	}
 
 	@Override
-	@Transactional
 	public void save(Departure departure) {
 		sessionFactory.getCurrentSession().save(departure);
 	}
 
 	@Override
-	@Transactional
 	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Departure departure = session.get(Departure.class, id);
+
+		Optional.ofNullable(departure.getDeparturePostOffice()).ifPresent(p -> p.deleteDeparture(id));
 
 		session.delete(departure);
 	}
