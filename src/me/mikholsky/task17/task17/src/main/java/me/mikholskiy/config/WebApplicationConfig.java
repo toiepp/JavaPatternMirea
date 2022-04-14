@@ -11,6 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -49,6 +50,11 @@ public class WebApplicationConfig implements EnvironmentAware {
 	@Bean
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
 		return new HibernateTransactionManager(sessionFactory);
+	}
+
+	@Bean
+	public CriteriaBuilder criteriaBuilder(SessionFactory sessionFactory) {
+		return sessionFactory.getCriteriaBuilder();
 	}
 
 	private Properties hibernateProperties() {

@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,11 @@ public class PostOfficeDao implements Dao<PostOffice> {
 	@Override
 	public List<PostOffice> getAll() {
 		return sessionFactory.getCurrentSession().createQuery("from PostOffice", PostOffice.class).getResultList();
+	}
+
+	@Override
+	public List<PostOffice> getAll(CriteriaQuery<PostOffice> criteriaQuery) {
+		return sessionFactory.createEntityManager().createQuery(criteriaQuery).getResultList();
 	}
 
 	@Override

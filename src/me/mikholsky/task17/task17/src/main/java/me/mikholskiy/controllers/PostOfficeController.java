@@ -1,6 +1,5 @@
 package me.mikholskiy.controllers;
 
-import me.mikholskiy.daos.Dao;
 import me.mikholskiy.entities.PostOffice;
 import me.mikholskiy.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +8,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
+import java.util.List;
+
 @Controller
 @RequestMapping("/post-office")
 public class PostOfficeController {
 	private Service<PostOffice> postOfficeService;
+	private CriteriaBuilder criteriaBuilder;
 
 	@Autowired
 	public void setPostOfficeService(@Qualifier("postOfficeServiceImpl") Service<PostOffice> postOfficeService) {
 		this.postOfficeService = postOfficeService;
+	}
+
+	@Autowired
+	public void setCriteriaBuilder(CriteriaBuilder criteriaBuilder) {
+		this.criteriaBuilder = criteriaBuilder;
 	}
 
 	@GetMapping
@@ -37,8 +48,27 @@ public class PostOfficeController {
 	}
 
 	@GetMapping("/list")
-	public String showAllPostOffices(Model model) {
-		model.addAttribute("listOfPostOffices", postOfficeService.getAll());
+	public String showAllPostOffices(@RequestParam(value = "by-name", required = false) String byName,
+									 @RequestParam(value = "by-city", required = false) String byCity,
+									 Model model) {
+		CriteriaQuery<PostOffice> query = criteriaBuilder.createQuery(PostOffice.class);
+		Root<PostOffice> root = query.from(PostOffice.class);
+
+		if (byName != null && !byName.isEmpty()) {
+			query.where(criteriaBuilder.like(root.get("name"), byName));
+		}
+
+		if (byCity != null && !byCity.isEmpty()) {
+			query.where(criteriaBuilder.like(root.get("cityName"), byCity));
+		}
+
+		if (byName == null && byCity == null) {
+			query.select(root);
+		}
+
+		List<PostOffice> list = postOfficeService.getAll(query);
+
+		model.addAttribute("listOfPostOffices", list);
 
 		return "post-office/list";
 	}
