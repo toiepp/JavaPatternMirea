@@ -5,6 +5,7 @@ import me.mikholskiy.entities.Departure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,11 @@ public class DepartureServiceImpl implements Service<Departure> {
 	@Override
 	public List<Departure> getAll() {
 		return departureDao.getAll();
+	}
+
+	@Override
+	public List<Departure> getAll(CriteriaQuery<Departure> criteriaQuery) {
+		return departureDao.getAll(criteriaQuery);
 	}
 
 	@Override

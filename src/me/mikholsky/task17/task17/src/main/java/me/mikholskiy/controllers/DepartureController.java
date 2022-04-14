@@ -9,14 +9,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
+import java.util.List;
+
 @Controller
 @RequestMapping("/departure")
 public class DepartureController {
 	private Service<Departure> departureService;
+	private CriteriaBuilder criteriaBuilder;
 
 	@Autowired
 	public void setDepartureService(@Qualifier("departureServiceImpl") Service<Departure> departureService) {
 		this.departureService = departureService;
+	}
+
+	@Autowired
+	public void setCriteriaBuilder(CriteriaBuilder criteriaBuilder) {
+		this.criteriaBuilder = criteriaBuilder;
 	}
 
 	@GetMapping
@@ -37,8 +49,25 @@ public class DepartureController {
 	}
 
 	@GetMapping("/list")
-	public String showAllDepartures(Model model) {
-		model.addAttribute("listOfDepartures", departureService.getAll());
+	public String showAllDepartures(@RequestParam(value = "by-type", required = false) String byType,
+									@RequestParam(value = "by-departure-date", required = false) String byDepartureName,
+									Model model) {
+		CriteriaQuery<Departure> query = criteriaBuilder.createQuery(Departure.class);
+		Root<Departure> root = query.from(Departure.class);
+
+		if (byType != null && !byType.isEmpty()) {
+			query.where(criteriaBuilder.like(root.get("type"), byType));
+		}
+
+		if (byDepartureName != null && !byDepartureName.isEmpty()) {
+			query.where(criteriaBuilder.like(root.get("departureDate"), byDepartureName));
+		}
+
+		if (byType == null && byDepartureName == null) {
+			query.select(root);
+		}
+
+		model.addAttribute("listOfDepartures", departureService.getAll(query));
 
 		return "departure/list";
 	}
