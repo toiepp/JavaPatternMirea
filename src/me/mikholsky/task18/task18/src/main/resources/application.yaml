@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mirea_database
+    username: postgres
+    driver-class-name: org.postgresql.Driver
