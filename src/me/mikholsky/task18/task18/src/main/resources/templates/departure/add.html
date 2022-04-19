@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add</title>
+</head>
+<body>
+<h1>Add departure</h1>
+<hr>
+<form action="#" th:action="@{/departures}" th:object="${newOne}" method="post">
+  <p>Type: <input type="text" th:field="*{type}"></p>
+  <p>Date: <input type="text" th:field="*{date}" placeholder="dd-MM-yyyy"></p>
+  <p><input type="submit" value="Submit"></p>
+</form>
+</body>
+</html>
