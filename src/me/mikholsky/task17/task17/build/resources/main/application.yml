@@ -1,0 +1,8 @@
+jdbc.url:             jdbc:postgresql://localhost:5432/mirea_database?useSSL=false
+jdbc.username:        mikholskiy
+jdbc.password:        spflmk7q
+jdbc.driverClassName: org.postgresql.Driver
+
+hibernate.show_sql:   true
+hibernate.format_sql: fasle
+hibernate.dialect:    org.hibernate.dialect.PostgreSQL10Dialect
