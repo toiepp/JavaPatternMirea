@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mirea_database
+    username: mikholskiy
+    driver-class-name: org.postgresql.Driver
+    password: spflmk7q
+
+server:
+  port: 8081

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post offices</title>
+  <style>
+  .post-office {
+    margin-top:   10px;
+    margin-right: 10px;
+    padding:      5px;
+    border:       1px solid black;
+    display:      inline-block;
+  }
+</style>
+</head>
+<body>
+<h1>All post offices</h1>
+<hr>
+<a th:href="@{/post-offices/new}">Add new post office</a>
+<br>
+<!--/*@thymesVar id="listOfPostOffices" type="java.util.List"*/-->
+<div class="post-office" th:each="postOffice: ${listOfPostOffices}">
+  <p>Type: <strong th:text="${postOffice.name}"></strong></p>
+  <p>Date: <strong th:text="${postOffice.cityName}"></strong></p>
+  <form action="#" th:action="@{/post-offices/delete(id=${postOffice.id})}" method="post">
+    <input type="submit" value="Delete"/>
+  </form>
+
+</div>
+
+</body>
+</html>

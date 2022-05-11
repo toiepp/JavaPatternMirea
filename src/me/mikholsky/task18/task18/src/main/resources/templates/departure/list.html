@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Departures</title>
+  <style>
+    .departure {
+      margin-top:   10px;
+      margin-right: 10px;
+      padding:      5px;
+      border:       1px solid black;
+      display:      inline-block;
+    }
+  </style>
+</head>
+<body>
+<h1>All departures</h1>
+<hr>
+<a th:href="@{/departures/new}">Add new departure.</a>
+<br>
+<!--/*@thymesVar id="listOfDepartures" type="java.util.List"*/-->
+<div class="departure" th:each="departure: ${listOfDepartures}">
+  <p>Type: <strong th:text="${departure.type}"></strong></p>
+  <p>Date: <strong th:text="${departure.date}"></strong></p>
+  <form action="#" th:action="@{/departures/delete(id=${departure.id})}" method="post">
+    <input type="submit" value="Delete"/>
+  </form>
+
+</div>
+</body>
+</html>

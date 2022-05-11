@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add</title>
+</head>
+<body>
+<h1>Add post office</h1>
+<hr>
+<form action="#" th:action="@{/post-offices}" th:object="${newOne}" method="post">
+  <p>Name: <input type="text" th:field="*{name}"></p>
+  <p>City name: <input type="text" th:field="*{cityName}"></p>
+  <p><input type="submit" value="Submit"></p>
+</form>
+</body>
+</html>
